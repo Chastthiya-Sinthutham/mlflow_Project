@@ -1,3 +1,4 @@
+import os
 import pandas as pd
 import mlflow
 
@@ -15,9 +16,9 @@ def validate_data(data_path):
         # 1. Load data from CSV
         try:
             df = pd.read_csv(data_path)
-            print(f"Data loaded successfully from {data_path}.")
+            print(f"✓ Data loaded successfully from {data_path}.")
         except FileNotFoundError:
-            print(f"Error: The file was not found at {data_path}")
+            print(f"✗ Error: The file was not found at {data_path}")
             print("Please update the path in the 'if __name__ == \"__main__\":' block.")
             return
 
@@ -50,8 +51,11 @@ def validate_data(data_path):
 
 
 if __name__ == "__main__":
-    # --- IMPORTANT ---
-    # Update this path to the actual location of your CSV file.
-    # Using raw string (r"...") or forward slashes (/) is recommended for Windows paths.
-    csv_path = r"C:\Users\ACE\Documents\mlflow_Project\cyberbullying_tweets.csv"
+    # ใช้ path ที่สัมพันธ์กับสภาพแวดล้อม
+    if os.getenv('GITHUB_ACTIONS'):
+        csv_path = "cyberbullying_tweets.csv"
+    else:
+        csv_path = r"C:\Users\Advice IT\mlflow_Project\cyberbullying_tweets.csv"
+    
+    print(f"Looking for CSV at: {csv_path}")
     validate_data(data_path=csv_path)
