@@ -1,0 +1,8 @@
+artifact_location: file:///C:/Users/ACE/Documents/mlflow_Project/mlruns/559896078369520227
+creation_time: 1761070016618
+experiment_id: '559896078369520227'
+last_update_time: 1761212511397
+lifecycle_stage: deleted
+name: Cyberbullying Classification - Model Training
+tags:
+  mlflow.experimentKind: custom_model_development

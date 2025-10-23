@@ -1,0 +1,14 @@
+artifact_uri: file:///C:/Users/ACE/Documents/mlflow_Project/mlruns/815789163541132341/1a13ef6cda6e4383b3682f63e61cd1f9/artifacts
+end_time: 1761213449494
+entry_point_name: ''
+experiment_id: '815789163541132341'
+lifecycle_stage: active
+run_id: 1a13ef6cda6e4383b3682f63e61cd1f9
+run_name: bright-pug-252
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1761213449262
+status: 3
+tags: []
+user_id: ACE

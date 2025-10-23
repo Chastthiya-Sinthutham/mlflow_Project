@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/Users/ACE/Documents/mlflow_Project/mlruns/342600486417228786/a817dea240304f59a47c25ac22d017d1/artifacts
+deleted_time: 1761212511396
+end_time: 1761075761901
+entry_point_name: ''
+experiment_id: '342600486417228786'
+lifecycle_stage: deleted
+run_id: a817dea240304f59a47c25ac22d017d1
+run_name: multinomial_nb_alpha_0.5
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1761075756081
+status: 3
+tags: []
+user_id: ACE

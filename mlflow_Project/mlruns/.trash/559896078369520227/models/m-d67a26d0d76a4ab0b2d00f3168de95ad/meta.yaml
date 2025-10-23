@@ -1,0 +1,10 @@
+artifact_location: file:///C:/Users/ACE/Documents/mlflow_Project/mlruns/559896078369520227/models/m-d67a26d0d76a4ab0b2d00f3168de95ad/artifacts
+creation_timestamp: 1761076262037
+experiment_id: '559896078369520227'
+last_updated_timestamp: 1761076265784
+model_id: m-d67a26d0d76a4ab0b2d00f3168de95ad
+model_type: null
+name: cyberbullying_classifier_pipeline
+source_run_id: c8b4ef9836414ff4b3c7b8fb56a6e8f8
+status: 2
+status_message: null

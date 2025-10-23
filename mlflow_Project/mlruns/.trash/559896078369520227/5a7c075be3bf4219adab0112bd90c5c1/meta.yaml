@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/Users/ACE/Documents/mlflow_Project/mlruns/559896078369520227/5a7c075be3bf4219adab0112bd90c5c1/artifacts
+deleted_time: 1761212511397
+end_time: 1761076236264
+entry_point_name: ''
+experiment_id: '559896078369520227'
+lifecycle_stage: deleted
+run_id: 5a7c075be3bf4219adab0112bd90c5c1
+run_name: linearsvc_C_0.1
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1761076231126
+status: 3
+tags: []
+user_id: ACE

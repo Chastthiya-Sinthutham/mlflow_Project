@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/Users/ACE/Documents/mlflow_Project/mlruns/476346451105296324/263d8f501b8a486886e6652c837ee60a/artifacts
+deleted_time: 1761212523988
+end_time: 1761069960457
+entry_point_name: ''
+experiment_id: '476346451105296324'
+lifecycle_stage: deleted
+run_id: 263d8f501b8a486886e6652c837ee60a
+run_name: aged-asp-679
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1761069960310
+status: 3
+tags: []
+user_id: ACE
