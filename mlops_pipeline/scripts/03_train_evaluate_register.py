@@ -1,10 +1,8 @@
-import pandas as pd
-import mlflow
 import sys
 import os
+import pandas as pd
+import mlflow
 from mlflow.artifacts import download_artifacts
-
-# --- อัปเดต: เพิ่ม import ที่จำเป็น ---
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.svm import LinearSVC
 from sklearn.pipeline import Pipeline
@@ -18,18 +16,20 @@ def train_evaluate_register(preprocessing_run_id, C=1.0):
     """
     # ตั้งค่า tracking URI ในโค้ดโดยตรง - ใช้ absolute path
     if os.getenv('GITHUB_ACTIONS'):
-        os.environ.pop('MLFLOW_TRACKING_URI', None)
+        for key in ['MLFLOW_TRACKING_URI', 'MLFLOW_ARTIFACT_URI', 'MLFLOW_REGISTRY_URI']:
+            os.environ.pop(key, None)
+        
         tracking_uri = f"file://{os.getcwd()}/mlruns"
         mlflow.set_tracking_uri(tracking_uri)
+        os.environ['MLFLOW_ARTIFACT_URI'] = tracking_uri
         print(f"Set MLflow tracking URI to: {tracking_uri}")
     
     ACCURACY_THRESHOLD = 0.80 
-    mlflow.set_experiment("Cyberbullying Classification - Model Training v2")
+    mlflow.set_experiment("Cyberbullying Classification - Model Training v3")
 
-    # --- อัปเดต: ตั้งชื่อ Run ให้สื่อถึงค่า C ที่ใช้ ---
     with mlflow.start_run(run_name=f"linearsvc_C_{C}"):
         print(f"Starting training run with LinearSVC, C={C}...")
-        mlflow.set_tag("ml.step", "model_training_evaluation")
+        mlflow.set_tag("ml.step", "model_training_and_evaluation")
         mlflow.set_tag("model_type", "LinearSVC") # เพิ่ม Tag บอกประเภทโมเดล
         mlflow.log_param("preprocessing_run_id", preprocessing_run_id)
 

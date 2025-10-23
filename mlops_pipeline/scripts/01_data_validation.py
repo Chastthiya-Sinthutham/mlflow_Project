@@ -9,12 +9,16 @@ def validate_data(data_path):
     """
     # ตั้งค่า tracking URI ในโค้ดโดยตรง - ใช้ absolute path
     if os.getenv('GITHUB_ACTIONS'):
-        os.environ.pop('MLFLOW_TRACKING_URI', None)
+        # ล้างค่า environment variable ทั้งหมดที่เกี่ยวข้อง
+        for key in ['MLFLOW_TRACKING_URI', 'MLFLOW_ARTIFACT_URI', 'MLFLOW_REGISTRY_URI']:
+            os.environ.pop(key, None)
+        
         tracking_uri = f"file://{os.getcwd()}/mlruns"
         mlflow.set_tracking_uri(tracking_uri)
+        os.environ['MLFLOW_ARTIFACT_URI'] = tracking_uri
         print(f"Set MLflow tracking URI to: {tracking_uri}")
     
-    mlflow.set_experiment("Cyberbullying Classification - Data Validation v2")
+    mlflow.set_experiment("Cyberbullying Classification - Data Validation v3")
 
     with mlflow.start_run():
         print("Starting data validation run...")
@@ -31,7 +35,6 @@ def validate_data(data_path):
 
         # 2. Perform validation checks
         num_rows, num_cols = df.shape
-        # The dataset has 6 classes: religion, age, gender, ethnicity, not_cyberbullying, other_cyberbullying
         num_classes = df['cyberbullying_type'].nunique()
         missing_values = df.isnull().sum().sum()
 
@@ -58,7 +61,6 @@ def validate_data(data_path):
 
 
 if __name__ == "__main__":
-    # ใช้ path ที่สัมพันธ์กับสภาพแวดล้อม
     if os.getenv('GITHUB_ACTIONS'):
         csv_path = "cyberbullying_tweets.csv"
     else:

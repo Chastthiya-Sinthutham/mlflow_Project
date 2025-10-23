@@ -15,12 +15,17 @@ def preprocess_data(data_path, test_size=0.25, random_state=42):
         for key in ['MLFLOW_TRACKING_URI', 'MLFLOW_ARTIFACT_URI', 'MLFLOW_REGISTRY_URI']:
             os.environ.pop(key, None)
         
-        # ตั้งค่า tracking URI
+        # ตั้งค่า tracking URI และ artifact URI
         tracking_uri = f"file://{os.getcwd()}/mlruns"
         mlflow.set_tracking_uri(tracking_uri)
+        
+        # บังคับให้ใช้ artifact URI ที่ถูกต้อง
+        os.environ['MLFLOW_ARTIFACT_URI'] = tracking_uri
         print(f"Set MLflow tracking URI to: {tracking_uri}")
     
-    mlflow.set_experiment("Cyberbullying Classification - Data Preprocessing v2")
+    # ใช้ชื่อ experiment ใหม่เพื่อหลีกเลี่ยง conflict
+    experiment_name = "Cyberbullying Classification - Data Preprocessing v3"
+    mlflow.set_experiment(experiment_name)
 
     with mlflow.start_run() as run:
         run_id = run.info.run_id

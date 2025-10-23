@@ -75,8 +75,9 @@ jobs:
         pip install -r mlops_pipeline/requirements.txt
 
 
-    - name: Create MLflow directory
+    - name: Clean and create MLflow directory
       run: |
+        rm -rf mlruns
         mkdir -p mlruns
         chmod -R 755 mlruns
 
