@@ -22,7 +22,7 @@ def preprocess_data(data_path, test_size=0.25, random_state=42):
         except FileNotFoundError:
             print(f"Error: The file was not found at {data_path}")
             print("Please update the path in the 'if __name__ == \"__main__\":' block.")
-            return
+            return None  # เปลี่ยนจาก return เป็น return None
             
         # Drop rows with missing values for simplicity
         df.dropna(subset=['tweet_text', 'cyberbullying_type'], inplace=True)
@@ -58,14 +58,23 @@ def preprocess_data(data_path, test_size=0.25, random_state=42):
         print("Please use the following Run ID for the next step (training):")
         print(f"Preprocessing Run ID: {run_id}")
         print("-" * 50)
+        
         # ส่ง run_id กลับไปให้ GitHub Actions
-        import os
         if os.getenv('GITHUB_OUTPUT'):
             with open(os.environ['GITHUB_OUTPUT'], 'a') as f:
                 f.write(f"run_id={run_id}\n")
+        
+        # **เพิ่มบรรทัดนี้: return run_id**
+        return run_id
 
 if __name__ == "__main__":
     # --- IMPORTANT ---
     # Update this path to the actual location of your CSV file.
     csv_path = r"C:/Users/Advice IT/mlflow_Project/cyberbullying_tweets.csv"
-    preprocess_data(data_path=csv_path)
+    # **เปลี่ยนจาก preprocess_data(...) เป็น**
+    run_id = preprocess_data(data_path=csv_path)
+    if run_id:
+        print(f"✓ Successfully completed preprocessing with run_id: {run_id}")
+    else:
+        print("✗ Preprocessing failed")
+        exit(1)
