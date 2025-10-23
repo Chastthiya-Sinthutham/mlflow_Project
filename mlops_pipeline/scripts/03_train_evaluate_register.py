@@ -16,9 +16,12 @@ def train_evaluate_register(preprocessing_run_id, C=1.0):
     โหลดข้อมูล, ฝึกสอนโมเดล LinearSVC พร้อมปรับค่า C, ประเมินผล,
     และลงทะเบียนโมเดลถ้าผ่านเกณฑ์
     """
-    # ตั้งค่า tracking URI ในโค้ดโดยตรง
+    # ตั้งค่า tracking URI ในโค้ดโดยตรง - ใช้ absolute path
     if os.getenv('GITHUB_ACTIONS'):
-        mlflow.set_tracking_uri("file:./mlruns")
+        os.environ.pop('MLFLOW_TRACKING_URI', None)
+        tracking_uri = f"file://{os.getcwd()}/mlruns"
+        mlflow.set_tracking_uri(tracking_uri)
+        print(f"Set MLflow tracking URI to: {tracking_uri}")
     
     ACCURACY_THRESHOLD = 0.80 
     mlflow.set_experiment("Cyberbullying Classification - Model Training v2")

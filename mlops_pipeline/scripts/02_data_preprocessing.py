@@ -9,9 +9,14 @@ def preprocess_data(data_path, test_size=0.25, random_state=42):
     Loads raw tweet data, splits it into training and testing sets,
     and logs the resulting datasets as artifacts in MLflow.
     """
-    # ตั้งค่า tracking URI ในโค้ดโดยตรง
+    # ตั้งค่า tracking URI ในโค้ดโดยตรง - ใช้ absolute path
     if os.getenv('GITHUB_ACTIONS'):
-        mlflow.set_tracking_uri("file:./mlruns")
+        # ล้างค่า environment variable เก่า
+        os.environ.pop('MLFLOW_TRACKING_URI', None)
+        # ใช้ absolute path แทน relative path
+        tracking_uri = f"file://{os.getcwd()}/mlruns"
+        mlflow.set_tracking_uri(tracking_uri)
+        print(f"Set MLflow tracking URI to: {tracking_uri}")
     
     mlflow.set_experiment("Cyberbullying Classification - Data Preprocessing v2")
 
