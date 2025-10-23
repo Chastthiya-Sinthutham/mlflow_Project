@@ -1,0 +1,14 @@
+artifact_uri: file:///home/runner/work/mlflow_Project/mlflow_Project/mlruns/330612562760685645/9c674db8c4f44cc1bb34c0832b2cf569/artifacts
+end_time: 1761235031582
+entry_point_name: ''
+experiment_id: '330612562760685645'
+lifecycle_stage: active
+run_id: 9c674db8c4f44cc1bb34c0832b2cf569
+run_name: linearsvc_C_0.1
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1761235028204
+status: 3
+tags: []
+user_id: runner

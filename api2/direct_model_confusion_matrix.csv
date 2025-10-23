@@ -1,0 +1,7 @@
+,age,ethnicity,gender,not_cyberbullying,other_cyberbullying,religion
+age,1974,5,1,9,8,1
+ethnicity,1,1943,9,9,24,4
+gender,5,11,1716,130,122,9
+not_cyberbullying,82,29,79,1043,673,80
+other_cyberbullying,63,33,86,401,1334,39
+religion,2,2,8,45,14,1929
