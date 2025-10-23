@@ -7,6 +7,10 @@ def validate_data(data_path):
     Loads the cyberbullying tweets dataset, performs basic validation,
     and logs the results to MLflow.
     """
+    # ตั้งค่า tracking URI ในโค้ดโดยตรง
+    if os.getenv('GITHUB_ACTIONS'):
+        mlflow.set_tracking_uri("file:./mlruns")
+    
     mlflow.set_experiment("Cyberbullying Classification - Data Validation v2")
 
     with mlflow.start_run():

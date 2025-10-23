@@ -76,21 +76,16 @@ jobs:
 
 
     - name: Run Data Validation
-      run: |
-        export MLFLOW_TRACKING_URI=./mlruns
-        python mlops_pipeline/scripts/01_data_validation.py
+      run: python mlops_pipeline/scripts/01_data_validation.py
 
 
     - name: Run Data Preprocessing
       id: preprocessing
-      run: |
-        export MLFLOW_TRACKING_URI=./mlruns
-        python mlops_pipeline/scripts/02_data_preprocessing.py
+      run: python mlops_pipeline/scripts/02_data_preprocessing.py
 
 
     - name: Run Model Training, Evaluation, and Registration
       run: |
-        export MLFLOW_TRACKING_URI=./mlruns
         RUN_ID="${{ steps.preprocessing.outputs.run_id }}"
         if [ -z "$RUN_ID" ]; then
           echo "Error: run_id is empty"
@@ -101,9 +96,7 @@ jobs:
 
     - name: Transition Model to Staging
       if: success()
-      run: |
-        export MLFLOW_TRACKING_URI=./mlruns
-        python mlops_pipeline/scripts/05_transition_model.py "cyberbullying-classifier-prod" "Staging"
+      run: python mlops_pipeline/scripts/05_transition_model.py "cyberbullying-classifier-prod" "Staging"
 
 
     - name: Upload MLflow artifacts for inspection

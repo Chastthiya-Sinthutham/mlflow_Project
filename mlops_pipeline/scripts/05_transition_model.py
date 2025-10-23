@@ -1,4 +1,6 @@
 import sys
+import os
+import mlflow
 from mlflow.tracking import MlflowClient
 
 
@@ -7,6 +9,10 @@ def transition_model_alias(model_name, alias):
     Sets an alias for the latest version of a registered model.
     This replaces the deprecated "stage" functionality.
     """
+    # ตั้งค่า tracking URI ในโค้ดโดยตรง
+    if os.getenv('GITHUB_ACTIONS'):
+        mlflow.set_tracking_uri("file:./mlruns")
+    
     client = MlflowClient()
     try:
         # Find the latest version of the model by searching and sorting

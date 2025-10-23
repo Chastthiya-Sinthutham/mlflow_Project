@@ -16,6 +16,10 @@ def train_evaluate_register(preprocessing_run_id, C=1.0):
     โหลดข้อมูล, ฝึกสอนโมเดล LinearSVC พร้อมปรับค่า C, ประเมินผล,
     และลงทะเบียนโมเดลถ้าผ่านเกณฑ์
     """
+    # ตั้งค่า tracking URI ในโค้ดโดยตรง
+    if os.getenv('GITHUB_ACTIONS'):
+        mlflow.set_tracking_uri("file:./mlruns")
+    
     ACCURACY_THRESHOLD = 0.80 
     mlflow.set_experiment("Cyberbullying Classification - Model Training v2")
 

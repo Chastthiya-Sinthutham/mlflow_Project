@@ -9,6 +9,10 @@ def preprocess_data(data_path, test_size=0.25, random_state=42):
     Loads raw tweet data, splits it into training and testing sets,
     and logs the resulting datasets as artifacts in MLflow.
     """
+    # ตั้งค่า tracking URI ในโค้ดโดยตรง
+    if os.getenv('GITHUB_ACTIONS'):
+        mlflow.set_tracking_uri("file:./mlruns")
+    
     mlflow.set_experiment("Cyberbullying Classification - Data Preprocessing v2")
 
     with mlflow.start_run() as run:
@@ -68,14 +72,9 @@ def preprocess_data(data_path, test_size=0.25, random_state=42):
         return run_id
 
 if __name__ == "__main__":
-    # ใช้ path ที่สัมพันธ์กับ root ของ repository
-    # สำหรับ local: ใช้ path เต็ม
-    # สำหรับ GitHub Actions: ใช้ relative path
     if os.getenv('GITHUB_ACTIONS'):
-        # รันบน GitHub Actions - ใช้ relative path จาก root
         csv_path = "cyberbullying_tweets.csv"
     else:
-        # รันบน local - ใช้ absolute path
         csv_path = r"C:\Users\Advice IT\mlflow_Project\cyberbullying_tweets.csv"
     
     print(f"Looking for CSV at: {csv_path}")
