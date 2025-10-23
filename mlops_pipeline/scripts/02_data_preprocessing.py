@@ -64,11 +64,8 @@ def preprocess_data(data_path, test_size=0.25, random_state=42):
             with open(os.environ['GITHUB_OUTPUT'], 'a') as f:
                 f.write(f"run_id={run_id}\n")
 
-    if __name__ == "__main__":
-        # --- IMPORTANT ---
-        # Update this path to the actual location of your CSV file.
-        csv_path = r"C:/Users/Advice IT/mlflow_Project/cyberbullying_tweets.csv"
-        run_id = main()
-        
-
-        print(f"Preprocessing completed with run_id: {run_id}")
+if __name__ == "__main__":
+    # --- IMPORTANT ---
+    # Update this path to the actual location of your CSV file.
+    csv_path = r"C:/Users/Advice IT/mlflow_Project/cyberbullying_tweets.csv"
+    preprocess_data(data_path=csv_path)
