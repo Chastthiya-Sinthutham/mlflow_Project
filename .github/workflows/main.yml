@@ -98,7 +98,7 @@ jobs:
           echo "Error: run_id is empty"
           exit 1
         fi
-        python mlops_pipeline/scripts/03_train_evaluate_register.py "$RUN_ID" 10.0
+        python mlops_pipeline/scripts/03_train_evaluate_register.py "$RUN_ID" 0.1
 
 
     - name: Transition Model to Staging
