@@ -80,12 +80,14 @@ def train_evaluate_register(preprocessing_run_id, C=1.0):
 
 
 if __name__ == "__main__":
-    if len(sys.argv) < 2:
-        print("Usage: python scripts/03_train_evaluate_register.py <preprocessing_run_id> [C_value]")
+    if len(sys.argv) < 3:
+        print("Usage: script.py <run_id> <C_value>")
         sys.exit(1)
     
-    run_id = sys.argv[1]
-    # --- อัปเดต: รับค่า C จาก command line ---
-    c_value = float(sys.argv[2]) if len(sys.argv) > 2 else 1.0
-    train_evaluate_register(preprocessing_run_id=run_id, C=c_value)
+    preprocessing_run_id = sys.argv[1]
+    C_value = float(sys.argv[2])
+    
+    print(f"Using preprocessing run_id: {preprocessing_run_id}")
+    print(f"Using C value: {C_value}")
+    train_evaluate_register(preprocessing_run_id=preprocessing_run_id, C=C_value)
 

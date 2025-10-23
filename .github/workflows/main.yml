@@ -84,7 +84,13 @@ jobs:
 
 
     - name: Run Model Training, Evaluation, and Registration
-      run: python mlops_pipeline/scripts/03_train_evaluate_register.py ${{ steps.preprocessing.outputs.run_id }} 10.0
+      run: |
+        RUN_ID="${{ steps.preprocessing.outputs.run_id }}"
+        if [ -z "$RUN_ID" ]; then
+          echo "Error: run_id is empty"
+          exit 1
+        fi
+        python mlops_pipeline/scripts/03_train_evaluate_register.py "$RUN_ID" 10.0
 
 
     - name: Transition Model to Staging

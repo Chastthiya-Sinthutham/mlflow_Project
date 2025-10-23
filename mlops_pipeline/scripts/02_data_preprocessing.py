@@ -1,3 +1,4 @@
+from ast import main
 import os
 import pandas as pd
 from sklearn.model_selection import train_test_split
@@ -62,5 +63,13 @@ def preprocess_data(data_path, test_size=0.25, random_state=42):
 if __name__ == "__main__":
     # --- IMPORTANT ---
     # Update this path to the actual location of your CSV file.
-    csv_path = r"C:\Users\ACE\Documents\mlflow_Project\cyberbullying_tweets.csv"
-    preprocess_data(data_path=csv_path)
+    csv_path = r"C:/Users/Advice IT/mlflow_Project/cyberbullying_tweets.csv"
+    run_id = main()
+    
+    # ส่ง run_id กลับไปให้ GitHub Actions
+    import os
+    if os.getenv('GITHUB_OUTPUT'):
+        with open(os.environ['GITHUB_OUTPUT'], 'a') as f:
+            f.write(f"run_id={run_id}\n")
+    
+    print(f"Preprocessing completed with run_id: {run_id}")
