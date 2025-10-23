@@ -11,9 +11,11 @@ def preprocess_data(data_path, test_size=0.25, random_state=42):
     """
     # ตั้งค่า tracking URI ในโค้ดโดยตรง - ใช้ absolute path
     if os.getenv('GITHUB_ACTIONS'):
-        # ล้างค่า environment variable เก่า
-        os.environ.pop('MLFLOW_TRACKING_URI', None)
-        # ใช้ absolute path แทน relative path
+        # ล้างค่า environment variable ทั้งหมดที่เกี่ยวข้อง
+        for key in ['MLFLOW_TRACKING_URI', 'MLFLOW_ARTIFACT_URI', 'MLFLOW_REGISTRY_URI']:
+            os.environ.pop(key, None)
+        
+        # ตั้งค่า tracking URI
         tracking_uri = f"file://{os.getcwd()}/mlruns"
         mlflow.set_tracking_uri(tracking_uri)
         print(f"Set MLflow tracking URI to: {tracking_uri}")
@@ -23,6 +25,7 @@ def preprocess_data(data_path, test_size=0.25, random_state=42):
     with mlflow.start_run() as run:
         run_id = run.info.run_id
         print(f"Starting data preprocessing run with run_id: {run_id}")
+        print(f"Artifact URI: {mlflow.get_artifact_uri()}")
         mlflow.set_tag("ml.step", "data_preprocessing")
 
         # 1. Load data from CSV
@@ -31,7 +34,6 @@ def preprocess_data(data_path, test_size=0.25, random_state=42):
             print(f"✓ Data loaded successfully from {data_path}")
         except FileNotFoundError:
             print(f"✗ Error: The file was not found at {data_path}")
-            print("Please update the path in the 'if __name__ == \"__main__\":' block.")
             return None
             
         # Drop rows with missing values for simplicity
@@ -60,12 +62,17 @@ def preprocess_data(data_path, test_size=0.25, random_state=42):
         mlflow.log_metric("test_set_rows", len(X_test))
 
         # 5. Log the processed data directory as an artifact
-        mlflow.log_artifacts(processed_data_dir, artifact_path="processed_data")
-        print("Logged processed data as artifacts in MLflow.")
+        try:
+            mlflow.log_artifacts(processed_data_dir, artifact_path="processed_data")
+            print("Logged processed data as artifacts in MLflow.")
+        except Exception as e:
+            print(f"Error logging artifacts: {e}")
+            print(f"Current working directory: {os.getcwd()}")
+            print(f"Artifact URI: {mlflow.get_artifact_uri()}")
+            return None
         
         print("-" * 50)
         print("Data preprocessing run finished.")
-        print("Please use the following Run ID for the next step (training):")
         print(f"Preprocessing Run ID: {run_id}")
         print("-" * 50)
         

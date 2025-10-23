@@ -75,6 +75,12 @@ jobs:
         pip install -r mlops_pipeline/requirements.txt
 
 
+    - name: Create MLflow directory
+      run: |
+        mkdir -p mlruns
+        chmod -R 755 mlruns
+
+
     - name: Run Data Validation
       run: python mlops_pipeline/scripts/01_data_validation.py
 
