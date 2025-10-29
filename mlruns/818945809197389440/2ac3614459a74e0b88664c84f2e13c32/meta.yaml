@@ -1,0 +1,14 @@
+artifact_uri: file:///C:/Users/ACE/Documents/mlflow_/mlruns/818945809197389440/2ac3614459a74e0b88664c84f2e13c32/artifacts
+end_time: 1761234732194
+entry_point_name: ''
+experiment_id: '818945809197389440'
+lifecycle_stage: active
+run_id: 2ac3614459a74e0b88664c84f2e13c32
+run_name: mnb_alpha_0.5
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1761234727239
+status: 3
+tags: []
+user_id: ACE

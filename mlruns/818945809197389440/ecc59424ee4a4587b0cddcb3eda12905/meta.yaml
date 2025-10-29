@@ -1,0 +1,14 @@
+artifact_uri: file:///C:/Users/ACE/Documents/mlflow_/mlruns/818945809197389440/ecc59424ee4a4587b0cddcb3eda12905/artifacts
+end_time: 1761232016808
+entry_point_name: ''
+experiment_id: '818945809197389440'
+lifecycle_stage: active
+run_id: ecc59424ee4a4587b0cddcb3eda12905
+run_name: linearsvc_C_0.5
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1761232011738
+status: 3
+tags: []
+user_id: ACE

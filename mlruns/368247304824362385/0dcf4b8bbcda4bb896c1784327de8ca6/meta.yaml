@@ -1,0 +1,14 @@
+artifact_uri: file:///C:/Users/ACE/Documents/mlflow_/mlruns/368247304824362385/0dcf4b8bbcda4bb896c1784327de8ca6/artifacts
+end_time: 1761231931892
+entry_point_name: ''
+experiment_id: '368247304824362385'
+lifecycle_stage: active
+run_id: 0dcf4b8bbcda4bb896c1784327de8ca6
+run_name: monumental-cub-396
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1761231931463
+status: 3
+tags: []
+user_id: ACE

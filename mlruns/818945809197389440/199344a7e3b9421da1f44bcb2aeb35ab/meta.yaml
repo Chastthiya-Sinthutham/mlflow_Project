@@ -1,0 +1,14 @@
+artifact_uri: file:///C:/Users/ACE/Documents/mlflow_/mlruns/818945809197389440/199344a7e3b9421da1f44bcb2aeb35ab/artifacts
+end_time: 1761234323073
+entry_point_name: ''
+experiment_id: '818945809197389440'
+lifecycle_stage: active
+run_id: 199344a7e3b9421da1f44bcb2aeb35ab
+run_name: logistic_C_10.0
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1761234316279
+status: 3
+tags: []
+user_id: ACE

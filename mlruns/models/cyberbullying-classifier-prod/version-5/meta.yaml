@@ -1,0 +1,15 @@
+creation_timestamp: 1761234276833
+current_stage: None
+deployment_job_state: null
+description: null
+last_updated_timestamp: 1761234276833
+model_id: m-21b4a31494fa4012ab2b14a023a9dc5a
+name: cyberbullying-classifier-prod
+run_id: 8c702300e489458cb22ff24df267636f
+run_link: null
+source: models:/m-21b4a31494fa4012ab2b14a023a9dc5a
+status: READY
+status_message: null
+storage_location: file:///C:/Users/ACE/Documents/mlflow_/mlruns/818945809197389440/models/m-21b4a31494fa4012ab2b14a023a9dc5a/artifacts
+user_id: null
+version: 5

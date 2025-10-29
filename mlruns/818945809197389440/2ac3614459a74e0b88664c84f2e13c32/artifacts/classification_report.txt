@@ -1,0 +1,12 @@
+                     precision    recall  f1-score   support
+
+                age       0.68      0.99      0.81      1998
+          ethnicity       0.87      0.88      0.87      1990
+             gender       0.82      0.87      0.85      1993
+  not_cyberbullying       0.69      0.34      0.45      1986
+other_cyberbullying       0.65      0.48      0.55      1956
+           religion       0.79      0.97      0.87      2000
+
+           accuracy                           0.76     11923
+          macro avg       0.75      0.76      0.73     11923
+       weighted avg       0.75      0.76      0.73     11923

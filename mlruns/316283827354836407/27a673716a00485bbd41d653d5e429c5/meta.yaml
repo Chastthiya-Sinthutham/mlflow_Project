@@ -1,0 +1,14 @@
+artifact_uri: file:///C:/Users/ACE/Documents/mlflow_/mlruns/316283827354836407/27a673716a00485bbd41d653d5e429c5/artifacts
+end_time: 1761230679061
+entry_point_name: ''
+experiment_id: '316283827354836407'
+lifecycle_stage: active
+run_id: 27a673716a00485bbd41d653d5e429c5
+run_name: illustrious-cod-787
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1761230679004
+status: 3
+tags: []
+user_id: ACE
